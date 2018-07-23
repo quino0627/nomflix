@@ -1,42 +1,41 @@
-//for share things
-
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const prodConfig = require("./webpack.prod");
 const devConfig = require("./webpack.dev");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-
 
 const MODE = process.env.npm_lifecycle_event;
 
 const PATHS = {
-    entry: path.resolve(__dirname, "../src/index.js")
+  entry: path.join(__dirname, "../src/index.js")
 };
 
 const commonConfig = {
-    entry: ["babel-polyfill", PATHS.entry],
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules)/,
-                use: {
-                    loader: "babel-loader"
-                }
-            }
-        ]
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname, "../src/index.html"),
-            filename: "index.html"
-        })
+  entry: ["babel-polyfill", PATHS.entry],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader"
+        }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: ["url-loader?limit=10000", "img-loader"]
+      }
     ]
-
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, "../src/index.html"),
+      filename: "index.html"
+    })
+  ]
 };
 
 if (MODE === "dev") {
-    module.exports = Object.assign({}, commonConfig, devConfig);
+  module.exports = Object.assign({}, commonConfig, devConfig);
 } else if (MODE === "build") {
-    module.exports = Object.assign({}, commonConfig, prodConfig);
+  module.exports = Object.assign({}, commonConfig, prodConfig);
 }

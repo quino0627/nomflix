@@ -1,29 +1,30 @@
-//for developing
-const path = require("path");
+const postcssPresetEnv = require("postcss-preset-env");
 
 module.exports = {
-    mode: "development",
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    },
-                    {
-                        loader: "css-loader",
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    {
-                        loader: "postcss-loader"
-                    }
-                ]
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1
             }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              ident: "postcss",
+              plugins: () => [postcssPresetEnv()]
+            }
+          }
         ]
-    }
+      }
+    ]
+  }
 };
-
-//여기에다가 숙제하기!
