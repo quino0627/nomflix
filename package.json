@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --public-url https://quino0627.github.io/nomflix/",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
