@@ -1,8 +1,0 @@
-@import "reset.css";
-@import "header.css";
-@import "video.css";
-
-body {
-  background: black;
-  height: 1000vh;
-}

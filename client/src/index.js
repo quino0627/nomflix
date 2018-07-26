@@ -1,5 +1,3 @@
-import "../src/css/style.css";
-
 const navigation = document.querySelector("header");
 const SCROLLED_CLASS = "scrolled";
 
