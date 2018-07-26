@@ -1,0 +1,40 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  transition: all 0.2s linear;
+  margin-top: 70px;
+}
+
+.grid:hover {
+  transform: translateX(-30px);
+}
+
+.grid__item {
+  background-color: #fee140;
+  background-image: linear-gradient(90deg, #fee140 0%, #fa709a 100%);
+
+  height: 200px;
+  transform-origin: center left;
+  transition: all 0.2s linear;
+}
+
+.grid:hover .grid__item {
+  opacity: 0.5;
+}
+
+.grid:hover .grid__item:hover {
+  opacity: 1;
+}
+
+.grid__item:hover ~ .grid__item {
+  transform: translateX(60px);
+}
+
+.grid__item:hover {
+  transform: scale(1.5) translateY(-5px);
+  opacity: 1;
+}
+
+/* 1.hover item take the brothers to the right and move them  */
+/* 2.Hover item move the previous one HOW? */
+/* 3.make the hovered one bigger */
