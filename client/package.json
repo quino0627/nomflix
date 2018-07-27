@@ -4,7 +4,7 @@
   "description": "Cloning Netlifx",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm -rf dist",
+    "prebuild": "rm -rf ../server/public",
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html -d ../server/public",
     "deploy": "gh-pages -d dist"
